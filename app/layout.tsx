@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Inter } from "next/font/google";
-// The stylesheet is loaded by Next.js at runtime; TypeScript does not have a
-// declaration for CSS side-effect imports in this project.
-// @ts-expect-error CSS modules are handled by Next.js, not TypeScript.
 import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
