@@ -1,4 +1,19 @@
+"""
+Pydantic models, split into two layers on purpose:
 
+- RawDriverScore: internal only. Carries everything core/gate.py needs to
+  decide eligibility (driver_history_count, whether every feature was
+  null). Never returned directly by the API.
+- GatedDriverScore / PredictionsResponse: the enforced boundary of what the
+  API can ever return (FR-7). Accuracy, backtest, and verification data
+  simply have no field to travel through here — they can't leak by
+  omission elsewhere, because response_model= in api/index.py strips
+  anything not declared on these models.
+- ScenarioRequest / ScenarioResponse: Scenario Lab (added per user
+  request, originally out of scope for Phase 1 — see ADR-0006). Reuses
+  the same scorer and gate; original-vs-scenario score comparison is
+  explicitly allowed by FR-7, unlike accuracy/backtest data.
+"""
 
 from __future__ import annotations
 
@@ -26,6 +41,8 @@ class GatedDriverScore(BaseModel):
 
 
 class PredictionsResponse(BaseModel):
+    model_config = {"protected_namespaces": ()}  # allow the model_pick field name
+
     race: str
     race_date: str
     data_through: str

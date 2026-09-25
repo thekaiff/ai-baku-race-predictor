@@ -1,0 +1,8 @@
+# Local development/testing only — never installed by Vercel's build
+# (requirements.txt alone is what gets deployed). pytest/httpx/uvicorn
+# add ~35MB and are irrelevant to the deployed function's bundle-size
+# problem, but they don't belong in production regardless.
+-r requirements.txt
+pytest==8.3.3
+httpx==0.27.2
+uvicorn[standard]==0.32.0
