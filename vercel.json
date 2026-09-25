@@ -3,5 +3,12 @@
   "framework": "nextjs",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index.py" }
-  ]
-}
+  ],
+
+   "functions": {
+    "api/index.py": {
+      "runtime": "python3.12",
+      "excludeFiles": "{.git/**,.github/**,.next/**,.vercel/**,.venv/**,node_modules/**,tests/**,docs/**,__pycache__/**,**/*.ipynb}"
+        }
+     }
+  }
