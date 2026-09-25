@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Big_Shoulders, Inter } from "next/font/google";
+// import { Big_Shoulders, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const bigShoulders = Big_Shoulders({
-  subsets: ["latin"],
-  // weight: ["700", "800", "900"],
-  display: "swap",
+// const bigShoulders = Big_Shoulders({
+//   subsets: ["latin"],
+//   // weight: ["700", "800", "900"],
+//   display: "swap",
+//   variable: "--font-display",
+// });
+
+const bigShoulders = localFont({
+  src: "../public/fonts/BigShouldersDisplay-Variable.woff2",
   variable: "--font-display",
+  display: "swap",
 });
+
 
 const inter = Inter({
   subsets: ["latin"],
   // weight: ["400", "500", "600"],
-  display: "swap",
   variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
