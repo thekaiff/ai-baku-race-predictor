@@ -1,0 +1,11 @@
+api/
+core/
+data/
+tests/
+
+requirements.txt
+requirements-dev.txt
+.python-version
+
+.venv/
+.next/
