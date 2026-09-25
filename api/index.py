@@ -14,9 +14,21 @@ from core.config import get_settings
 from core.gate import apply_gate
 from core.schemas import PredictionsResponse, ScenarioRequest, ScenarioResponse
 from core.scorer import score_field, score_field_with_override
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(title="ai-baku-race-predictor")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://ai-baku-race-predictor.vercel.app",
+        "http://localhost:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @lru_cache(maxsize=1)
 def _cached_predictions() -> PredictionsResponse:
