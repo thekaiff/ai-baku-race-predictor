@@ -4,13 +4,15 @@ import "./globals.css";
 
 const bigShoulders = Big_Shoulders({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  // weight: ["700", "800", "900"],
+  display: "swap",
   variable: "--font-display",
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  // weight: ["400", "500", "600"],
+  display: "swap",
   variable: "--font-body",
 });
 
